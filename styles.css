@@ -1,0 +1,83 @@
+/* style.css */
+/* body {
+  font-family: sans-serif;
+  margin: 2rem;
+  background-color: #f9fafb;
+} 
+
+table {
+    box-shadow: 0 0 10px efga(0,0,0,1);
+    border-collapse: collapse;
+    font-family:'Quicksand', sans-serif;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+table, thead, th {
+    background: #009578
+    color(#f9fafb)
+}
+
+table, th, td {
+  border: 1px solid black;
+}   */
+
+
+h1 {
+    color: #009578;
+}
+
+/* Basic table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Table header styling */
+th {
+  background-color: #4CAF50;
+  color: white;
+  text-align: left;
+  padding: 12px;
+  font-weight: bold;
+}
+
+/* Table cell styling */
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Alternate row coloring */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #e9e9e9;
+}
+
+/* Table border */
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+/* Caption styling (if you use <caption>) */
+caption {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.deleteButton {
+    display: inline-block; /* Override any 'display: none' */
+    padding: 5px 10px;    /* Ensure it has size */
+    background: #f44336;   /* Make it visually distinct */
+    color: white;
+}
+

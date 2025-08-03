@@ -1,6 +1,8 @@
 const api='https://bookstore-api-six.vercel.app/api/books';
 const dataContainer = document.querySelector('#bookList');
 
+const hArray = ["title", "author", "publisher", "description", "language"]
+
 async function loadIntoTable(url, table){
      try {
         const response = await fetch(url);
@@ -13,7 +15,9 @@ async function loadIntoTable(url, table){
             const head = document.querySelector('thead');
             let tags = "<tr>";
                 for (i = 0 ; i <column.length; i++) {
-                    tags += `<th>${column[i]}</th>`;
+                    if (hArray.includes (column[i])) {
+                        tags += `<th>${column[i]}</th>`;
+                    }
                 }
             tags += "</tr>"
             head.innerHTML = tags;
@@ -24,22 +28,14 @@ async function loadIntoTable(url, table){
             let tags = "";
             data.map(d => {
                 tags += `<tr id="book-${d.id}">
+                    <td>${d.title}</td>
+                    <td>${d.author}</td>                    
+                    <td>${d.publisher}</td>
+                    <td>${d.description}</td>  
+                    <td>${d.language}</td>
                     <td>
                         <button class="deleteButton" data-id="${d.id}">delete</button>
                     </td>
-                    <td>${d.id}</td>
-                    <td>${d.title}</td>
-                    <td>${d.author}</td>
-                    <td>${d.isbn}</td>
-                    <td>${d.publishedDate}</td>
-                    <td>${d.publisher}</td>
-                    <td>${d.genre}</td>
-                    <td>${d.description}</td>
-                    <td>${d.pageCount}</td>
-                    <td>${d.language}</td>
-                    <td>${d.createdAt}</td>
-                    <td>${d.updatedAt}</td>
-                    
                 </tr>`
             })
             body.innerHTML = tags;
@@ -76,23 +72,16 @@ async function sendData() {
         // Add new row to table
         const newRow = document.querySelector('#tbody'); 
         newRow.innerHTML +=
-            `<tr id="book-${d.id}">
-                <td>
-                    <button class="deleteButton" data-id="${d.id}">Delete</button>
-                </td>
-                <td>${d.id}</td>
-                <td>${d.title}</td>
-                <td>${d.author}</td>
-                <td>${d.isbn}</td>
-                <td>${d.publishedDate}</td>
-                <td>${d.publisher}</td>
-                <td>${d.genre}</td>
-                <td>${d.description}</td>
-                <td>${d.pageCount}</td>
-                <td>${d.language}</td>
-                <td>${d.createdAt}</td>
-                <td>${d.updatedAt}</td>
-            </tr>`;
+                 `<tr id="book-${d.id}">
+                    <td>${d.title}</td>
+                    <td>${d.author}</td>                    
+                    <td>${d.publisher}</td>
+                    <td>${d.description}</td>  
+                    <td>${d.language}</td>
+                    <td>
+                        <button class="deleteButton" data-id="${d.id}">delete</button>
+                    </td>
+                </tr>`
         formEl.reset();
         console.log('Form is submitted');
         alert('Book submitted');
@@ -119,7 +108,8 @@ async function deleteData(id) {
         });
         console.log(`Item ${id} deleted`);
         document.getElementById(`book-${id}`)?.remove();
-        console.log(`Book ${id} deleted and row removed`); // Optional UI update
+        console.log(`Book ${id} deleted and row removed`); 
+        alert('Book deleted!');
         
 
     } catch (error) {
